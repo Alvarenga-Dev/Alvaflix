@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primaryColor">#0b0b0b</color>
+    <color name="primaryLightColor">#333333</color>
+    <color name="primaryDarkColor">#000000</color>
+    <color name="secondaryColor">#b61414</color>
+    <color name="secondaryLightColor">#f0513d</color>
+    <color name="secondaryDarkColor">#7e0000</color>
+    <!-- Text Color -->
+    <color name="textColor">#f1f1f1</color>
+    <!-- Color Buttons -->
+    <color name="buttonStateNormalColor">#f1f1f1</color>
+    <color name="buttonPressedColor">#DCCDCD</color>
+    <color name="buttonStateNormalMovieFavoriteColor">#25E043</color>
+    <color name="buttonPressedMovieFavoriteColor">#3BBD50</color>
+</resources>
