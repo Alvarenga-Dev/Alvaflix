@@ -6,11 +6,23 @@
     </style>
 
     <!-- AppTheme -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryDarkColor</item>
         <item name="colorAccent">@color/secondaryColor</item>
         <item name="android:navigationBarColor">@color/primaryColor</item>
+        <item name="buttonStyle">@style/ButtonStyle</item>
+    </style>
+
+    <style name="ToolbarStyle">
+        <item name="background">@android:color/transparent</item>
+        <item name="navigationIcon">@drawable/ic_back</item>
+        <item name="searchIcon">@drawable/ic_search</item>
+    </style>
+
+    <style name="ButtonStyle" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:background">@drawable/bg_button</item>
+        <item name="android:padding">12dp</item>
     </style>
 
 </resources>
