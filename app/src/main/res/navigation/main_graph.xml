@@ -8,6 +8,6 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.alvarengadev.alvaflix.view.fragments.home.HomeFragment"
-        android:label="fragment_home"
+        android:label="@string/label_home_fragment"
         tools:layout="@layout/fragment_home" />
 </navigation>
