@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Alvaflix</string>
+
+    <!-- navigation.xml -->
+    <string name="label_home_fragment">Home</string>
+    <string name="label_favorites_fragment">My List</string>
+    <string name="label_details_fragment">Details</string>
+
+    <!-- Home -->
+    <string name="title_welcome_home">Watch your series and movies favorites!</string>
+    <string name="btn_label_list_favorite_home">My List</string>
+    <string name="header_image_description_home">Woman and you journey!</string>
+    <string name="title_popular_movies_home">Popular on Alvaflix</string>
+    <string name="title_recommend_movies_home">Recommend</string>
+
+    <!-- Home - Menu -->
+    <string name="title_menu_home_search">Search</string>
+
+    <!-- Details -->
+    <string name="btn_label_add_favorite_details">Add favorite</string>
+    <string name="btn_label_is_favorite_details">Movie is favorite</string>
+    <string name="title_similar_movies_details">Recommend</string>
+
 </resources>
