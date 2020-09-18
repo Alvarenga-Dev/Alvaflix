@@ -7,7 +7,16 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.alvarengadev.alvaflix.view.fragments.home.HomeFragment"
+        android:name="com.alvarengadev.alvaflix.view.home.HomeFragment"
         android:label="@string/label_home_fragment"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.alvarengadev.alvaflix.view.details.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" />
 </navigation>
