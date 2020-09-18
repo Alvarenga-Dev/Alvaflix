@@ -69,7 +69,7 @@
 
         <TextView
             android:id="@+id/tv_details_description_movie"
-            style="@style/TitleStyle"
+            style="@style/TextStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

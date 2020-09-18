@@ -17,13 +17,15 @@
 
     <style name="ToolbarStyle">
         <item name="android:background">@android:color/transparent</item>
-        <item name="android:navigationIcon">@drawable/ic_back</item>
-        <item name="android:searchIcon">@drawable/ic_search</item>
     </style>
 
-    <style name="TitleStyle">
+    <style name="TextStyle">
         <item name="android:textColor">@color/textColor</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TitleStyle" parent="TextStyle">
+        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="ButtonStyle">
@@ -38,6 +40,7 @@
 
     <style name="LayoutStyle">
         <item name="android:background">@color/primaryColor</item>
+        <item name="android:scrollbarThumbVertical">@android:color/transparent</item>
     </style>
 
 </resources>
