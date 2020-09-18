@@ -13,17 +13,17 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/iv_details_icon_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:src="@drawable/ic_rating"
-            app:layout_constraintBottom_toBottomOf="@+id/textView"
-            app:layout_constraintEnd_toStartOf="@+id/textView"
-            app:layout_constraintTop_toTopOf="@+id/textView" />
+            app:layout_constraintBottom_toBottomOf="@+id/tv_details_value_rating_movie"
+            app:layout_constraintEnd_toStartOf="@+id/tv_details_value_rating_movie"
+            app:layout_constraintTop_toTopOf="@+id/tv_details_value_rating_movie" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tv_details_value_rating_movie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -34,7 +34,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/iv_details_poster_movie"
             android:layout_width="0dp"
             android:layout_height="270dp"
             android:layout_marginTop="16dp"
@@ -43,32 +43,32 @@
             android:src="@drawable/poster"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_details_value_rating_movie" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tv_details_timer_movie"
             style="@style/TitleStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="24dp"
             android:text="Time: 1h 12m"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_details_poster_movie"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/tv_details_year_movie"
             style="@style/TitleStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="24dp"
             android:text="Year: 2017"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_details_poster_movie"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/tv_details_description_movie"
             style="@style/TitleStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -77,10 +77,10 @@
             tools:text='Star Wars: The Last Jedi is a 2017 American epic space opera film written and directed by Rian Johnson. It is the second installment of the Star Wars sequel trilogy, following The Force Awakens, and it is the eighth episode of the nine-part "Skywalker saga". It was produced by Lucasfilm and distributed by Walt Disney Studios Motion Pictures.'
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintTop_toBottomOf="@+id/iv_details_poster_movie" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn_details_add_list"
             style="@style/ButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -90,10 +90,10 @@
             android:text="@string/btn_label_add_favorite_details"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_details_description_movie" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/tv_details_similar_movies"
             style="@style/TitleStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -101,9 +101,10 @@
             android:layout_marginTop="24dp"
             android:text="@string/title_similar_movies_details"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_details_add_list" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcy_details_similar_movies"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -111,7 +112,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_details_similar_movies" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
