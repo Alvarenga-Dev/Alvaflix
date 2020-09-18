@@ -1,4 +1,4 @@
-package com.alvarengadev.alvaflix.view.fragments.home
+package com.alvarengadev.alvaflix.view.home
 
 import androidx.lifecycle.ViewModel
 
