@@ -90,7 +90,7 @@
             app:layout_constraintTop_toBottomOf="@+id/rcy_home_popular_movies" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcy_homercy_recommend_movies"
+            android:id="@+id/rcy_recommend_movies"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
