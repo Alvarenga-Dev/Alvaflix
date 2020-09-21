@@ -22,7 +22,7 @@ class PopularMoviesAdapter() : RecyclerView.Adapter<PopularMoviesViewHolder>() {
     ): PopularMoviesViewHolder {
         val view = LayoutInflater
             .from(parent.context)
-            .inflate(R.layout.list_movies_horizontal, parent, false)
+            .inflate(R.layout.list_movies, parent, false)
 
         return PopularMoviesViewHolder(view, movieOnClickListener)
     }
