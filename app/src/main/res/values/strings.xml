@@ -3,7 +3,7 @@
 
     <!-- navigation.xml -->
     <string name="label_home_fragment">Home</string>
-    <string name="label_favorites_fragment">My List</string>
+    <string name="label_my_list_fragment">My List</string>
     <string name="label_details_fragment">Details</string>
 
     <!-- Home -->
