@@ -3,11 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.mylist.MyListFragment">
+    tools:context=".view.mylist.MyListFragment"
+    style="@style/LayoutStyle">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcy_my_list_favorites"
+        style="@style/RecyclerViewStyle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        android:paddingTop="75dp"/>
 
 </FrameLayout>

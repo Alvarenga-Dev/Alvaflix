@@ -30,6 +30,13 @@ class HomeFragment : Fragment() {
         setHasOptionsMenu(true)
 
         initRecyclerViews()
+        initButtonMyList()
+    }
+
+    private fun initButtonMyList() {
+        btn_home_my_list.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_myListFragment)
+        }
     }
 
     private fun initRecyclerViews() {

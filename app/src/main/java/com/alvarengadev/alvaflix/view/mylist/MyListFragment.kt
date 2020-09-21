@@ -1,20 +1,21 @@
 package com.alvarengadev.alvaflix.view.mylist
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.alvarengadev.alvaflix.R
+import com.alvarengadev.alvaflix.view.interfaces.MovieOnClickListener
+import com.alvarengadev.alvaflix.view.mylist.adapter.MyListAdapter
+import kotlinx.android.synthetic.main.fragment_my_list.*
 
 class MyListFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = MyListFragment()
-    }
-
-    private lateinit var viewModel: MyListViewModel
+    private val viewModel: MyListViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,8 +26,18 @@ class MyListFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(MyListViewModel::class.java)
-        // TODO: Use the ViewModel
+
+        val myListAdapter = MyListAdapter()
+        myListAdapter.setOnClickListener(object : MovieOnClickListener {
+            override fun onItemClick() {
+                findNavController().navigate(R.id.action_myListFragment_to_detailsFragment)
+            }
+        })
+
+        rcy_my_list_favorites.apply {
+            adapter = myListAdapter
+            layoutManager = GridLayoutManager(context, 3)
+        }
     }
 
 }
