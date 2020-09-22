@@ -51,6 +51,11 @@ dependencies {
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
 
+    //Rettrofit && Moshi
+    def square_version = '2.9.0'
+    implementation "com.squareup.retrofit2:retrofit:$square_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$square_version"
+
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
