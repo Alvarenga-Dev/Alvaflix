@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alvarengadev.alvaflix.R
@@ -40,23 +41,24 @@ class HomeFragment : Fragment() {
     }
 
     private fun initRecyclerViews() {
+       val layoutManagerHorizontal = LinearLayoutManager(context)
+       layoutManagerHorizontal.orientation = LinearLayoutManager.HORIZONTAL
 
-        val layoutManagerHorizontal = LinearLayoutManager(context)
-        layoutManagerHorizontal.orientation = LinearLayoutManager.HORIZONTAL
+        viewModel.listMoviePopularData.observe(viewLifecycleOwner, Observer { moviesPopular ->
+            val popularMoviesAdapter = PopularMoviesAdapter(moviesPopular)
 
-        val popularMoviesAdapter = PopularMoviesAdapter()
-        popularMoviesAdapter.setMovieOnClickListener(object : MovieOnClickListener {
-            override fun onItemClick() {
-                findNavController().navigate(R.id.action_homeFragment_to_detailsFragment)
+            popularMoviesAdapter.setMovieOnClickListener(object : MovieOnClickListener {
+                override fun onItemClick() {
+                    findNavController().navigate(R.id.action_homeFragment_to_detailsFragment)
+                }
+            })
+            rcy_home_popular_movies.apply {
+                adapter = popularMoviesAdapter
+                layoutManager = layoutManagerHorizontal
             }
         })
-
-        rcy_home_popular_movies.apply {
-            adapter = popularMoviesAdapter
-            layoutManager = layoutManagerHorizontal
-        }
-
-    }
+        viewModel.getListMoviePopular()
+   }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)

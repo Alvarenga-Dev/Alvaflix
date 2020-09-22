@@ -4,9 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.alvarengadev.alvaflix.R
+import com.alvarengadev.alvaflix.data.domain.MoviePopular
 import com.alvarengadev.alvaflix.view.interfaces.MovieOnClickListener
 
-class PopularMoviesAdapter() : RecyclerView.Adapter<PopularMoviesViewHolder>() {
+class PopularMoviesAdapter(
+    private val listMoviePopular: ArrayList<MoviePopular>
+) : RecyclerView.Adapter<PopularMoviesViewHolder>() {
 
     private lateinit var movieOnClickListener: MovieOnClickListener
 
@@ -24,18 +27,18 @@ class PopularMoviesAdapter() : RecyclerView.Adapter<PopularMoviesViewHolder>() {
             .from(parent.context)
             .inflate(R.layout.list_movies, parent, false)
 
-        return PopularMoviesViewHolder(view, movieOnClickListener)
+        return PopularMoviesViewHolder(view, movieOnClickListener, listMoviePopular)
     }
 
     override fun onBindViewHolder(
         holder: PopularMoviesViewHolder,
         position: Int
     ) {
-        holder.bind()
+        holder.bind(listMoviePopular[position])
     }
 
     override fun getItemCount(): Int {
-        return 5
+        return listMoviePopular.size
     }
 
 }
