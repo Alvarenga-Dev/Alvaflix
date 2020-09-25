@@ -10,8 +10,8 @@ class HomeViewModel : ViewModel() {
     val listMoviePopularData: MutableLiveData<ArrayList<Movie>> = MutableLiveData()
 
     fun getListMoviePopular() {
-        val apiDataSourceRepository = ApiDataSourceRepository(listMoviePopularData)
-        apiDataSourceRepository.callRetrofitApi()
+        val apiDataSourceRepository = ApiDataSourceRepository()
+        apiDataSourceRepository.callRetrofitApi(listMoviePopularData)
     }
 
 }

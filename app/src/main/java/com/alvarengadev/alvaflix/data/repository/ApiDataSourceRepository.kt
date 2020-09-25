@@ -10,29 +10,29 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ApiDataSourceRepository(
-    private val liveData: MutableLiveData<ArrayList<Movie>>
-) : Callback<MoviePopularResult> {
+class ApiDataSourceRepository {
 
-    fun callRetrofitApi() =
-        RetrofitInitializer().movieService().list().enqueue(this)
-
-    override fun onResponse(
-        call: Call<MoviePopularResult>,
-        response: Response<MoviePopularResult>
-    ) {
-        if (response.isSuccessful) {
-            response.body()?.let { moviePopularResult ->
-                liveData.value = MoviePopularMapper.responseToDomain(moviePopularResult.results)
+    fun callRetrofitApi(liveData: MutableLiveData<ArrayList<Movie>>) {
+        RetrofitInitializer().movieService().list().enqueue(object : Callback<MoviePopularResult> {
+            override fun onResponse(
+                call: Call<MoviePopularResult>,
+                response: Response<MoviePopularResult>
+            ) {
+                if (response.isSuccessful) {
+                    response.body()?.let { moviePopularResult ->
+                        liveData.value =
+                            MoviePopularMapper.responseToDomain(moviePopularResult.results)
+                    }
+                }
             }
-        }
-    }
 
-    override fun onFailure(
-        call: Call<MoviePopularResult>,
-        t: Throwable
-    ) {
-        Log.i("AAAAAAAA", t.message.toString())
+            override fun onFailure(
+                call: Call<MoviePopularResult>,
+                t: Throwable
+            ) {
+                Log.i("AAAAAAAA", t.message.toString())
+            }
+        })
     }
 
 }
