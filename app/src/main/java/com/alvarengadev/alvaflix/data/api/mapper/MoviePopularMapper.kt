@@ -19,7 +19,6 @@ class MoviePopularMapper {
                     moviePopularResponse.date
                 )
                 listMoviePopular.add(moviePopular)
-                Log.i("AAAAAAAA", moviePopular.description)
             }
             return listMoviePopular
         }

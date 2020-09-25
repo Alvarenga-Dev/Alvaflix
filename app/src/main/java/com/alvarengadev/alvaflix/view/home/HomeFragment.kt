@@ -30,7 +30,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
 
-        initRecyclerViews()
+        initRcyPopular()
         initRcyRecommends()
         initButtonMyList()
     }
@@ -41,7 +41,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun initRecyclerViews() {
+    private fun initRcyPopular() {
         viewModel.listMoviePopularData.observe(viewLifecycleOwner, { moviesPopular ->
             val popularMoviesAdapter = MoviesPopularAdapter(moviesPopular)
 

@@ -19,7 +19,6 @@ class MovieRecommendMapper {
                     movieRecommendResponse.date
                 )
                 listMovieRecommend.add(movieRecommend)
-                Log.i("Recommend", movieRecommendResponse.description)
             }
             return listMovieRecommend
         }

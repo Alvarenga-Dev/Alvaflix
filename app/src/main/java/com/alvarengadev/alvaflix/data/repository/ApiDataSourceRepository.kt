@@ -32,7 +32,7 @@ class ApiDataSourceRepository {
                 call: Call<MoviePopularResult>,
                 t: Throwable
             ) {
-                Log.i("AAAAAAAA", t.message.toString())
+                Log.i("Error", t.message.toString())
             }
         })
     }
@@ -52,7 +52,7 @@ class ApiDataSourceRepository {
                 }
 
                 override fun onFailure(call: Call<MovieRecommendResult>, t: Throwable) {
-                    Log.i("AAAAAAAA2", t.message.toString())
+                    Log.i("Error", t.message.toString())
                 }
 
             })
