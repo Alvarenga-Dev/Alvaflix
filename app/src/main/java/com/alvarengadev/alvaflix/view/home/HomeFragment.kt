@@ -6,9 +6,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.alvarengadev.alvaflix.R
+import com.alvarengadev.alvaflix.extensions.layoutHorizontal
 import com.alvarengadev.alvaflix.view.home.adapter.popular.PopularMoviesAdapter
+import com.alvarengadev.alvaflix.view.home.adapter.recommend.MovieRecommendAdapter
 import com.alvarengadev.alvaflix.view.interfaces.MovieOnClickListener
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -31,6 +32,7 @@ class HomeFragment : Fragment() {
         setHasOptionsMenu(true)
 
         initRecyclerViews()
+        initRcyRecommends()
         initButtonMyList()
     }
 
@@ -41,9 +43,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun initRecyclerViews() {
-       val layoutManagerHorizontal = LinearLayoutManager(context)
-       layoutManagerHorizontal.orientation = LinearLayoutManager.HORIZONTAL
-
         viewModel.listMoviePopularData.observe(viewLifecycleOwner, Observer { moviesPopular ->
             val popularMoviesAdapter = PopularMoviesAdapter(moviesPopular)
 
@@ -54,11 +53,23 @@ class HomeFragment : Fragment() {
             })
             rcy_home_popular_movies.apply {
                 adapter = popularMoviesAdapter
-                layoutManager = layoutManagerHorizontal
+                layoutManager = this.layoutHorizontal()
             }
         })
         viewModel.getListMoviePopular()
    }
+
+    private fun initRcyRecommends() {
+        viewModel.listMovieRecommendData.observe(viewLifecycleOwner, Observer { movieRecommend ->
+            val movieRecommendAdapter = MovieRecommendAdapter(movieRecommend)
+
+            rcy_recommend_movies.apply {
+                adapter = movieRecommendAdapter
+                layoutManager = this.layoutHorizontal()
+            }
+        })
+        viewModel.getListMovieRecommend()
+    }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
