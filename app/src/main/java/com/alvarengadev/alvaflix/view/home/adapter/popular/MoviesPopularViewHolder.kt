@@ -8,7 +8,7 @@ import com.alvarengadev.alvaflix.data.domain.Movie
 import com.alvarengadev.alvaflix.view.interfaces.MovieOnClickListener
 import com.squareup.picasso.Picasso
 
-class PopularMoviesViewHolder(
+class MoviesPopularViewHolder(
     itemView: View,
     onClickListener: MovieOnClickListener,
     listMoviePopular: ArrayList<Movie>

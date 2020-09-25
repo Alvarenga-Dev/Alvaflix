@@ -1,4 +1,4 @@
-package com.alvarengadev.alvaflix.view.home.adapter.popular
+package com.alvarengadev.alvaflix.view.home.adapter.recommend
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,38 +7,35 @@ import com.alvarengadev.alvaflix.R
 import com.alvarengadev.alvaflix.data.domain.Movie
 import com.alvarengadev.alvaflix.view.interfaces.MovieOnClickListener
 
-class PopularMoviesAdapter(
-    private val listMoviePopular: ArrayList<Movie>
-) : RecyclerView.Adapter<PopularMoviesViewHolder>() {
+class MoviesRecommendAdapter(
+    private val listRecommendMovies: ArrayList<Movie>
+) : RecyclerView.Adapter<MoviesRecommendViewHolder>() {
 
     private lateinit var movieOnClickListener: MovieOnClickListener
 
-    fun setMovieOnClickListener(
-        movieOnClickListener: MovieOnClickListener
-    ) {
+    fun setRecommendOnClickListener(movieOnClickListener: MovieOnClickListener) {
         this.movieOnClickListener = movieOnClickListener
     }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): PopularMoviesViewHolder {
+    ): MoviesRecommendViewHolder {
         val view = LayoutInflater
             .from(parent.context)
             .inflate(R.layout.list_movies, parent, false)
 
-        return PopularMoviesViewHolder(view, movieOnClickListener, listMoviePopular)
+        return MoviesRecommendViewHolder(view, movieOnClickListener, listRecommendMovies)
     }
 
     override fun onBindViewHolder(
-        holder: PopularMoviesViewHolder,
+        holder: MoviesRecommendViewHolder,
         position: Int
     ) {
-        holder.bind(listMoviePopular[position])
+        holder.bind(listRecommendMovies[position])
     }
 
     override fun getItemCount(): Int {
-        return listMoviePopular.size
+        return listRecommendMovies.size
     }
-
 }
