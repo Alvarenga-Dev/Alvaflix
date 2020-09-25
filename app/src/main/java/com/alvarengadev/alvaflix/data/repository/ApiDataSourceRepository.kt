@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.alvarengadev.alvaflix.data.api.mapper.MoviePopularMapper
 import com.alvarengadev.alvaflix.data.api.network.RetrofitInitializer
-import com.alvarengadev.alvaflix.data.api.network.popular.reponse.MoviePopularResult
+import com.alvarengadev.alvaflix.data.api.network.popular.response.MoviePopularResult
 import com.alvarengadev.alvaflix.data.domain.Movie
 import retrofit2.Call
 import retrofit2.Callback

@@ -1,7 +1,7 @@
 package com.alvarengadev.alvaflix.data.api.mapper
 
 import android.util.Log
-import com.alvarengadev.alvaflix.data.api.network.popular.reponse.MoviePopularResponseBody
+import com.alvarengadev.alvaflix.data.api.network.popular.response.MoviePopularResponseBody
 import com.alvarengadev.alvaflix.data.domain.Movie
 
 class MoviePopularMapper {

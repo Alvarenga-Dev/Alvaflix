@@ -1,4 +1,4 @@
-package com.alvarengadev.alvaflix.data.api.network.popular.reponse
+package com.alvarengadev.alvaflix.data.api.network.popular.response
 
 import com.squareup.moshi.Json
 
