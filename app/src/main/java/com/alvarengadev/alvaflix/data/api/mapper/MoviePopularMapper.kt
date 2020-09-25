@@ -2,14 +2,14 @@ package com.alvarengadev.alvaflix.data.api.mapper
 
 import android.util.Log
 import com.alvarengadev.alvaflix.data.api.network.popular.reponse.MoviePopularResponseBody
-import com.alvarengadev.alvaflix.data.domain.MoviePopular
+import com.alvarengadev.alvaflix.data.domain.Movie
 
 class MoviePopularMapper {
     companion object {
-        fun responseToDomain(listResponseBody: List<MoviePopularResponseBody>) : ArrayList<MoviePopular> {
-            val listMoviePopular = ArrayList<MoviePopular>()
+        fun responseToDomain(listResponseBody: List<MoviePopularResponseBody>) : ArrayList<Movie> {
+            val listMoviePopular = ArrayList<Movie>()
             for (moviePopularResponse in listResponseBody) {
-                val moviePopular = MoviePopular(
+                val moviePopular = Movie(
                     moviePopularResponse.id,
                     moviePopularResponse.title,
                     moviePopularResponse.poster,

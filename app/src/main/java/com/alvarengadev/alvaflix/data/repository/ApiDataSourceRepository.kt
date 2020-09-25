@@ -4,15 +4,14 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.alvarengadev.alvaflix.data.api.mapper.MoviePopularMapper
 import com.alvarengadev.alvaflix.data.api.network.RetrofitInitializer
-import com.alvarengadev.alvaflix.data.api.network.popular.reponse.MoviePopularResponseBody
 import com.alvarengadev.alvaflix.data.api.network.popular.reponse.MoviePopularResult
-import com.alvarengadev.alvaflix.data.domain.MoviePopular
+import com.alvarengadev.alvaflix.data.domain.Movie
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class ApiDataSourceRepository(
-    private val liveData: MutableLiveData<ArrayList<MoviePopular>>
+    private val liveData: MutableLiveData<ArrayList<Movie>>
 ) : Callback<MoviePopularResult> {
 
     fun callRetrofitApi() =

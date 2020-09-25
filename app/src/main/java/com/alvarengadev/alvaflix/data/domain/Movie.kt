@@ -1,6 +1,6 @@
 package com.alvarengadev.alvaflix.data.domain
 
-data class MoviePopular (
+data class Movie (
     val id: Int,
     val title: String,
     val poster: String,

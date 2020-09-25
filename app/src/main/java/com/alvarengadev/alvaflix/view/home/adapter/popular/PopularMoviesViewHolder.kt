@@ -4,14 +4,14 @@ import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.alvarengadev.alvaflix.R
-import com.alvarengadev.alvaflix.data.domain.MoviePopular
+import com.alvarengadev.alvaflix.data.domain.Movie
 import com.alvarengadev.alvaflix.view.interfaces.MovieOnClickListener
 import com.squareup.picasso.Picasso
 
 class PopularMoviesViewHolder(
     itemView: View,
     onClickListener: MovieOnClickListener,
-    listMoviePopular: ArrayList<MoviePopular>
+    listMoviePopular: ArrayList<Movie>
 ) : RecyclerView.ViewHolder(itemView) {
 
     init {
@@ -23,7 +23,7 @@ class PopularMoviesViewHolder(
         }
     }
 
-    fun bind(moviePopular: MoviePopular) {
+    fun bind(moviePopular: Movie) {
         val ivPoster = itemView.findViewById(R.id.iv_movie_poster) as ImageView
         Picasso.get()
             .load("https://image.tmdb.org/t/p/w500/${moviePopular.poster}")

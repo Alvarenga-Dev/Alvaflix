@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.alvarengadev.alvaflix.R
-import com.alvarengadev.alvaflix.data.domain.MoviePopular
+import com.alvarengadev.alvaflix.data.domain.Movie
 import com.alvarengadev.alvaflix.view.interfaces.MovieOnClickListener
 
 class PopularMoviesAdapter(
-    private val listMoviePopular: ArrayList<MoviePopular>
+    private val listMoviePopular: ArrayList<Movie>
 ) : RecyclerView.Adapter<PopularMoviesViewHolder>() {
 
     private lateinit var movieOnClickListener: MovieOnClickListener
