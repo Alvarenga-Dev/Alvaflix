@@ -2,15 +2,40 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/LayoutStyle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".view.details.DetailsFragment"
-    style="@style/LayoutStyle">
+    tools:context=".view.details.DetailsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/ib_details_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_details_title_movie"
+            style="@style/TitleStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="48dp"
+            android:textAllCaps="true"
+            app:layout_constraintBottom_toBottomOf="@+id/ib_details_back"
+            app:layout_constraintEnd_toStartOf="@+id/iv_details_icon_rating"
+            app:layout_constraintStart_toEndOf="@+id/ib_details_back"
+            app:layout_constraintTop_toTopOf="@+id/ib_details_back"
+            tools:text="Star wars the last jedi" />
 
         <ImageView
             android:id="@+id/iv_details_icon_rating"
@@ -28,44 +53,42 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            tools:text="5.0"
             android:textColor="#F0C21F"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="5.5" />
 
         <ImageView
             android:id="@+id/iv_details_poster_movie"
             android:layout_width="0dp"
             android:layout_height="270dp"
             android:layout_marginTop="16dp"
-            android:foreground="@drawable/foreground_header_details"
             android:scaleType="centerCrop"
-            android:src="@drawable/poster"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_details_value_rating_movie" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_details_value_rating_movie"
+            tools:src="@drawable/poster" />
 
-        <TextView
-            android:id="@+id/tv_details_timer_movie"
-            style="@style/TitleStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="24dp"
-            android:text="Time: 1h 12m"
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/foreground_header_details"
             app:layout_constraintBottom_toBottomOf="@+id/iv_details_poster_movie"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_details_poster_movie" />
 
         <TextView
             android:id="@+id/tv_details_year_movie"
             style="@style/TitleStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
             android:layout_marginBottom="24dp"
-            android:text="Year: 2017"
+            android:text="20-10-20"
             app:layout_constraintBottom_toBottomOf="@+id/iv_details_poster_movie"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/tv_details_description_movie"
@@ -74,10 +97,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            tools:text='Star Wars: The Last Jedi is a 2017 American epic space opera film written and directed by Rian Johnson. It is the second installment of the Star Wars sequel trilogy, following The Force Awakens, and it is the eighth episode of the nine-part "Skywalker saga". It was produced by Lucasfilm and distributed by Walt Disney Studios Motion Pictures.'
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_details_poster_movie" />
+            app:layout_constraintTop_toBottomOf="@+id/iv_details_poster_movie"
+            tools:text='Star Wars: The Last Jedi is a 2017 American epic space opera film written and directed by Rian Johnson. It is the second installment of the Star Wars sequel trilogy, following The Force Awakens, and it is the eighth episode of the nine-part "Skywalker saga". It was produced by Lucasfilm and distributed by Walt Disney Studios Motion Pictures.' />
 
         <Button
             android:id="@+id/btn_details_add_list"

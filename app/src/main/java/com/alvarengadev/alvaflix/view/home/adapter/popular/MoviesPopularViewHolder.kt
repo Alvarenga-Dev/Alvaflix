@@ -18,7 +18,7 @@ class MoviesPopularViewHolder(
         itemView.setOnClickListener {
             val positionRcy = adapterPosition
             if (positionRcy != RecyclerView.NO_POSITION) {
-                onClickListener.onItemClick()
+                onClickListener.onItemClick(listMoviePopular[positionRcy])
             }
         }
     }

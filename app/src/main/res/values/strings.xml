@@ -20,6 +20,7 @@
     <!-- Details -->
     <string name="btn_label_add_favorite_details">Add favorite</string>
     <string name="btn_label_is_favorite_details">Movie is favorite</string>
+    <string name="label_date_movies_details">Date: %s</string>
     <string name="title_similar_movies_details">Similar Movies</string>
 
 </resources>

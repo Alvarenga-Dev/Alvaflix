@@ -15,7 +15,7 @@ class MoviePopularMapper {
                     moviePopularResponse.poster,
                     moviePopularResponse.posterDetails,
                     moviePopularResponse.description,
-                    moviePopularResponse.rating,
+                    moviePopularResponse.rating.toString(),
                     moviePopularResponse.date
                 )
                 listMoviePopular.add(moviePopular)
