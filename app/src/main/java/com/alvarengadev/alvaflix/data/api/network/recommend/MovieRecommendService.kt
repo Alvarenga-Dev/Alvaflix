@@ -7,7 +7,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface MovieRecommendService {
-    @GET("movie/top_rated")
+    @GET("movie/upcoming")
     fun list(
         @Query("api_key") apiKey: String = API_KEY
     ) : Call<MovieRecommendResult>

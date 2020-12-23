@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.alvarengadev.alvaflix.R
+import com.alvarengadev.alvaflix.data.domain.Movie
 import com.alvarengadev.alvaflix.extensions.layoutHorizontal
 import com.alvarengadev.alvaflix.view.home.adapter.popular.MoviesPopularAdapter
 import com.alvarengadev.alvaflix.view.home.adapter.recommend.MoviesRecommendAdapter
@@ -17,7 +18,8 @@ class HomeFragment : Fragment() {
     private val viewModel: HomeViewModel by activityViewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_home, container, false)
@@ -30,7 +32,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
 
-        initRecyclerViews()
+        initRcyPopular()
         initRcyRecommends()
         initButtonMyList()
     }
@@ -41,13 +43,15 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun initRecyclerViews() {
+    private fun initRcyPopular() {
+        viewModel.getListMoviePopular()
         viewModel.listMoviePopularData.observe(viewLifecycleOwner, { moviesPopular ->
             val popularMoviesAdapter = MoviesPopularAdapter(moviesPopular)
 
             popularMoviesAdapter.setMovieOnClickListener(object : MovieOnClickListener {
-                override fun onItemClick() {
-                    findNavController().navigate(R.id.action_homeFragment_to_detailsFragment)
+                override fun onItemClick(movie: Movie) {
+                    val direction = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(movie)
+                    findNavController().navigate(direction)
                 }
             })
             rcy_home_popular_movies.apply {
@@ -55,16 +59,17 @@ class HomeFragment : Fragment() {
                 layoutManager = this.layoutHorizontal()
             }
         })
-        viewModel.getListMoviePopular()
    }
 
     private fun initRcyRecommends() {
+        viewModel.getListMovieRecommend()
         viewModel.listMovieRecommendData.observe(viewLifecycleOwner, { movieRecommend ->
             val movieRecommendAdapter = MoviesRecommendAdapter(movieRecommend)
 
             movieRecommendAdapter.setRecommendOnClickListener(object : MovieOnClickListener {
-                override fun onItemClick() {
-                    findNavController().navigate(R.id.action_homeFragment_to_detailsFragment)
+                override fun onItemClick(movie: Movie) {
+                    val direction = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(movie)
+                    findNavController().navigate(direction)
                 }
             })
 
@@ -73,7 +78,6 @@ class HomeFragment : Fragment() {
                 layoutManager = this.layoutHorizontal()
             }
         })
-        viewModel.getListMovieRecommend()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

@@ -1,6 +1,5 @@
 package com.alvarengadev.alvaflix.data.api.mapper
 
-import android.util.Log
 import com.alvarengadev.alvaflix.data.api.network.recommend.response.MovieRecommendResponseBody
 import com.alvarengadev.alvaflix.data.domain.Movie
 
@@ -15,11 +14,10 @@ class MovieRecommendMapper {
                     movieRecommendResponse.poster,
                     movieRecommendResponse.posterDetails,
                     movieRecommendResponse.description,
-                    movieRecommendResponse.rating,
+                    movieRecommendResponse.rating.toString(),
                     movieRecommendResponse.date
                 )
                 listMovieRecommend.add(movieRecommend)
-                Log.i("Recommend", movieRecommendResponse.description)
             }
             return listMovieRecommend
         }
