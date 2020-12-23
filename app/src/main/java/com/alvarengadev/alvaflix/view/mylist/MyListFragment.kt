@@ -28,6 +28,10 @@ class MyListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        ib_my_list_back.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
         val myListAdapter = MyListAdapter()
         myListAdapter.setOnClickListener(object : MovieOnClickListener {
             override fun onItemClick(movie: Movie) {

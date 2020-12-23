@@ -23,4 +23,7 @@
     <string name="label_date_movies_details">Date: %s</string>
     <string name="title_similar_movies_details">Similar Movies</string>
 
+    <!-- My List -->
+    <string name="title_my_list">My favorites movies</string>
+
 </resources>
