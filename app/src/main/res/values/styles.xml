@@ -25,7 +25,7 @@
     </style>
 
     <style name="TitleStyle" parent="TextStyle">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/title_size</item>
     </style>
 
     <style name="ButtonStyle">
@@ -45,8 +45,8 @@
 
     <style name="RecyclerViewStyle">
         <item name="android:clipToPadding">false</item>
-        <item name="android:paddingStart">16dp</item>
-        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingStart">@dimen/size_16dp</item>
+        <item name="android:paddingEnd">@dimen/size_16dp</item>
     </style>
 
 </resources>

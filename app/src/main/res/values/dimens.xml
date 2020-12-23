@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Values Default -->
+    <dimen name="size_12dp">12dp</dimen>
+    <dimen name="size_14dp">14dp</dimen>
+    <dimen name="size_16dp">16dp</dimen>
+    <dimen name="size_18dp">18dp</dimen>
+    <dimen name="size_20dp">20dp</dimen>
+
+    <!-- Texts -->
+    <dimen name="title_size">16sp</dimen>
+
+    <!-- Padding's -->
+    <dimen name="size_padding_toolbar">16dp</dimen>
+</resources>
