@@ -9,6 +9,9 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.alvarengadev.alvaflix.R
+import com.alvarengadev.alvaflix.data.database.AlvaflixDatabase
+import com.alvarengadev.alvaflix.data.domain.Movie
+import com.alvarengadev.alvaflix.data.repository.DatabaseDataSourceRepository
 import com.alvarengadev.alvaflix.extensions.layoutHorizontal
 import com.alvarengadev.alvaflix.utils.FormatDate
 import com.alvarengadev.alvaflix.view.details.adapter.similar.MovieSimilarAdapter
@@ -17,7 +20,14 @@ import kotlinx.android.synthetic.main.fragment_details.*
 
 class DetailsFragment : Fragment() {
 
-    private val viewModel: DetailsViewModel by activityViewModels()
+    private val viewModel: DetailsViewModel by activityViewModels(
+        factoryProducer = {
+            val database = AlvaflixDatabase.getInstance(requireContext())
+            DetailsViewModelFactory(
+                databaseDataSourceRepository = DatabaseDataSourceRepository(database.movieFavoritesDao)
+            )
+        }
+    )
     private val args: DetailsFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -45,6 +55,8 @@ class DetailsFragment : Fragment() {
         tv_details_year_movie.text = getString(R.string.label_date_movies_details, FormatDate.getDate(movie.date))
         tv_details_description_movie.text = movie.description
 
+        btn_details_add_list.setOnClickListener(addMovieFavorite(movie))
+
         val imagePoster = movie.posterDetails ?: movie.poster
 
         Picasso.get()
@@ -65,5 +77,9 @@ class DetailsFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun addMovieFavorite(movie: Movie) = View.OnClickListener {
+        viewModel.insertMovieFavorite(movie)
     }
 }
