@@ -9,14 +9,23 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.alvarengadev.alvaflix.R
+import com.alvarengadev.alvaflix.data.database.AlvaflixDatabase
 import com.alvarengadev.alvaflix.data.domain.Movie
+import com.alvarengadev.alvaflix.data.repository.DatabaseDataSourceRepository
 import com.alvarengadev.alvaflix.view.interfaces.MovieOnClickListener
 import com.alvarengadev.alvaflix.view.mylist.adapter.MyListAdapter
 import kotlinx.android.synthetic.main.fragment_my_list.*
 
 class MyListFragment : Fragment() {
 
-    private val viewModel: MyListViewModel by activityViewModels()
+    private val viewModel: MyListViewModel by activityViewModels(
+        factoryProducer = {
+            val database = AlvaflixDatabase.getInstance(requireContext())
+            MyListViewModelFactory(
+                databaseDataSourceRepository = DatabaseDataSourceRepository(database.movieFavoritesDao)
+            )
+        }
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,17 +41,22 @@ class MyListFragment : Fragment() {
             findNavController().popBackStack()
         }
 
-        val myListAdapter = MyListAdapter()
-        myListAdapter.setOnClickListener(object : MovieOnClickListener {
-            override fun onItemClick(movie: Movie) {
-                findNavController().navigate(R.id.action_myListFragment_to_detailsFragment)
-            }
-       })
+        viewModel.getAllMovieFavorites()
+        viewModel.listMovieFavorites.observe(viewLifecycleOwner, { listMovieFavorites ->
+            val myListAdapter = MyListAdapter(listMovieFavorites)
 
-        rcy_my_list_favorites.apply {
-            adapter = myListAdapter
-            layoutManager = GridLayoutManager(context, 3)
-        }
+            myListAdapter.setOnClickListener(object : MovieOnClickListener {
+                override fun onItemClick(movie: Movie) {
+                    val directions = MyListFragmentDirections.actionMyListFragmentToDetailsFragment(movie)
+                    findNavController().navigate(directions)
+                }
+            })
+
+            rcy_my_list_favorites.apply {
+                adapter = myListAdapter
+                layoutManager = GridLayoutManager(context, 3)
+            }
+        })
     }
 
 }
