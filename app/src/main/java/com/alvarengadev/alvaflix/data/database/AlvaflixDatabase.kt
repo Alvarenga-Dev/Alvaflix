@@ -10,7 +10,7 @@ import com.alvarengadev.alvaflix.utils.Constants
 
 @Database(entities = [MovieEntity::class], version = 1, exportSchema = false)
 abstract class AlvaflixDatabase : RoomDatabase() {
-    abstract val MovieFavoritesDao: MovieFavoritesDao
+    abstract val movieFavoritesDao: MovieFavoritesDao
 
     companion object {
         @Volatile
