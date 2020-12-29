@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.alvarengadev.alvaflix.R
@@ -17,6 +18,7 @@ import com.alvarengadev.alvaflix.extensions.createToast
 import com.alvarengadev.alvaflix.extensions.layoutHorizontal
 import com.alvarengadev.alvaflix.utils.FormatDate
 import com.alvarengadev.alvaflix.view.details.adapter.similar.MovieSimilarAdapter
+import com.alvarengadev.alvaflix.view.interfaces.MovieOnClickListener
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_details.*
 import kotlinx.coroutines.launch
@@ -48,7 +50,7 @@ class DetailsFragment : Fragment() {
 
     private fun initComponents() {
         ib_details_back.setOnClickListener {
-            findNavController().navigateUp()
+            findNavController().popBackStack()
         }
 
         val movie = args.movie
@@ -69,16 +71,18 @@ class DetailsFragment : Fragment() {
 
         viewModel.getListMovieSimilar(movie.id)
         viewModel.listMovieSimilarData.observe(viewLifecycleOwner, { listMoviesSimilar ->
-            if (listMoviesSimilar.isNullOrEmpty()) {
-                tv_details_similar_movies.visibility = View.INVISIBLE
-                rcy_details_similar_movies.visibility = View.INVISIBLE
-            } else {
-                tv_details_similar_movies.visibility = View.VISIBLE
-                rcy_details_similar_movies.apply {
-                    visibility = View.VISIBLE
-                    adapter = MovieSimilarAdapter(listMoviesSimilar)
-                    layoutManager = this.layoutHorizontal()
+            val movieSimilarAdapter = MovieSimilarAdapter(listMoviesSimilar)
+
+            movieSimilarAdapter.setOnClickListener(object : MovieOnClickListener {
+                override fun onItemClick(movie: Movie) {
+                    val directions = DetailsFragmentDirections.actionDetailsFragmentSelf(movie)
+                    findNavController().navigate(directions)
                 }
+            })
+
+            rcy_details_similar_movies.apply {
+                adapter = movieSimilarAdapter
+                layoutManager = this.layoutHorizontal()
             }
         })
     }

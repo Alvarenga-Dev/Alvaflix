@@ -5,10 +5,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.alvarengadev.alvaflix.R
 import com.alvarengadev.alvaflix.data.domain.Movie
+import com.alvarengadev.alvaflix.view.interfaces.MovieOnClickListener
 
 class MovieSimilarAdapter(
     private val listMovieSimilar: ArrayList<Movie>
     ) : RecyclerView.Adapter<MovieSimilarViewHolder>() {
+
+    private lateinit var movieOnClickListener: MovieOnClickListener
+
+    fun setOnClickListener(
+        movieOnClickListener: MovieOnClickListener
+    ) {
+        this.movieOnClickListener = movieOnClickListener
+    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -18,7 +27,7 @@ class MovieSimilarAdapter(
             .from(parent.context)
             .inflate(R.layout.list_movies, parent, false)
 
-        return MovieSimilarViewHolder(view)
+        return MovieSimilarViewHolder(view, movieOnClickListener, listMovieSimilar)
     }
 
     override fun onBindViewHolder(
