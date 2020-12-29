@@ -157,7 +157,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="My list"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="@string/label_details_my_list"
                     android:textColor="@color/textColor" />
             </LinearLayout>
 
@@ -183,7 +184,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="Share"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="@string/label_details_share_movie"
                     android:textColor="@color/textColor"/>
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

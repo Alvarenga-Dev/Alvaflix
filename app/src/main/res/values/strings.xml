@@ -21,6 +21,8 @@
     <string name="btn_label_add_favorite_details">Add favorite</string>
     <string name="btn_label_is_favorite_details">Movie is favorite</string>
     <string name="label_date_movies_details">Release: %s</string>
+    <string name="label_details_my_list">My list</string>
+    <string name="label_details_share_movie">Share</string>
     <string name="title_similar_movies_details">Similar Movies</string>
 
     <!-- My List -->
