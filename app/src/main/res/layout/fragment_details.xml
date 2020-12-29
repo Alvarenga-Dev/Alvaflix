@@ -150,9 +150,7 @@
                     android:id="@+id/iv_details_icon_my_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:src="@drawable/ic_plus"
-                    android:focusable="true" />
+                    android:src="@drawable/ic_plus" />
 
                 <TextView
                     android:id="@+id/tv_details_title_mt_list"
@@ -179,9 +177,7 @@
                     android:id="@+id/iv_details_icon_share"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:src="@drawable/ic_share"
-                    android:focusable="true" />
+                    android:src="@drawable/ic_share" />
 
                 <TextView
                     android:id="@+id/tv_details_title_share"
