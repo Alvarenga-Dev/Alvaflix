@@ -80,9 +80,16 @@ class DetailsFragment : Fragment() {
                 }
             })
 
-            rcy_details_similar_movies.apply {
-                adapter = movieSimilarAdapter
-                layoutManager = this.layoutHorizontal()
+            if (listMoviesSimilar.isNullOrEmpty()) {
+                tv_details_similar_movies.visibility = View.GONE
+                rcy_details_similar_movies.visibility = View.GONE
+            } else {
+                tv_details_similar_movies.visibility = View.VISIBLE
+                rcy_details_similar_movies.apply {
+                    visibility = View.VISIBLE
+                    adapter = movieSimilarAdapter
+                    layoutManager = this.layoutHorizontal()
+                }
             }
         })
     }
