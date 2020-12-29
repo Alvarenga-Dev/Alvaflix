@@ -109,29 +109,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/iv_details_poster_movie"
                 tools:text='Star Wars: The Last Jedi is a 2017 American epic space opera film written and directed by Rian Johnson. It is the second installment of the Star Wars sequel trilogy, following The Force Awakens, and it is the eighth episode of the nine-part "Skywalker saga". It was produced by Lucasfilm and distributed by Walt Disney Studios Motion Pictures.' />
 
-            <Button
-                android:id="@+id/btn_details_add_list"
-                style="@style/ButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:drawableEnd="@drawable/ic_plus"
-                android:drawablePadding="8dp"
-                android:text="@string/btn_label_add_favorite_details"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_details_description_movie" />
-
             <TextView
                 android:id="@+id/tv_details_similar_movies"
                 style="@style/TitleStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="32dp"
                 android:text="@string/title_similar_movies_details"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_details_add_list" />
+                app:layout_constraintTop_toBottomOf="@+id/btn_linear_details_my_list" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcy_details_similar_movies"
@@ -144,6 +131,58 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_details_similar_movies" />
+
+            <LinearLayout
+                android:id="@+id/btn_linear_details_my_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_details_description_movie">
+
+                <ImageView
+                    android:id="@+id/iv_details_icon_my_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_plus" />
+
+                <TextView
+                    android:id="@+id/tv_details_title_mt_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="My list"
+                    android:textColor="@color/textColor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btn_linear_details_share_movie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_linear_details_my_list"
+                app:layout_constraintStart_toEndOf="@+id/btn_linear_details_my_list"
+                app:layout_constraintTop_toTopOf="@+id/btn_linear_details_my_list">
+
+                <ImageView
+                    android:id="@+id/iv_details_icon_share"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_share" />
+
+                <TextView
+                    android:id="@+id/tv_details_title_share"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Share"
+                    android:textColor="@color/textColor"/>
+            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </LinearLayout>

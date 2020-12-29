@@ -7,8 +7,8 @@ import com.alvarengadev.alvaflix.data.repository.ApiDataSourceRepository
 
 class HomeViewModel : ViewModel() {
 
-    val listMoviePopularData: MutableLiveData<ArrayList<Movie>> = MutableLiveData()
-    val listMovieRecommendData: MutableLiveData<ArrayList<Movie>> = MutableLiveData()
+    val listMoviePopularData = MutableLiveData<ArrayList<Movie>>()
+    val listMovieRecommendData = MutableLiveData<ArrayList<Movie>>()
 
     fun getListMoviePopular() {
         ApiDataSourceRepository.callMoviesPopular(listMoviePopularData)

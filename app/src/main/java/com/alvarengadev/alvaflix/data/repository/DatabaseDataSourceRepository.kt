@@ -10,6 +10,10 @@ class DatabaseDataSourceRepository(private val movieFavoritesDao: MovieFavorites
         movieFavoritesDao.insert(toEntity(movie))
     }
 
+    suspend fun delete(movie: Movie) {
+        movieFavoritesDao.delete(toEntity(movie))
+    }
+
     suspend fun getAllMovieFavorites(): ArrayList<Movie> {
         return toMovies(movieFavoritesDao.getAll())
     }

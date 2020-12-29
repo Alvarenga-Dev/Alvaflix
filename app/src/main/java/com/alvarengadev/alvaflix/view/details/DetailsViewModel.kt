@@ -12,7 +12,8 @@ class DetailsViewModel(
     private val databaseDataSourceRepository: DatabaseDataSourceRepository
 ) : ViewModel() {
 
-    val listMovieSimilarData: MutableLiveData<ArrayList<Movie>> = MutableLiveData()
+    val listMovieSimilarData = MutableLiveData<ArrayList<Movie>>()
+    val isMovieFavoriteData = MutableLiveData<Boolean>()
 
     fun insertMovieFavorite(movie: Movie) {
         viewModelScope.launch {
@@ -20,7 +21,19 @@ class DetailsViewModel(
         }
     }
 
+    fun deleteMovieFavorite(movie: Movie) {
+        viewModelScope.launch {
+            databaseDataSourceRepository.delete(movie)
+        }
+    }
+
     fun getListMovieSimilar(movieId: Int) {
         ApiDataSourceRepository.callMoviesSimilar(listMovieSimilarData, movieId)
+    }
+
+    fun isMovieFavorite(movie: Movie) {
+        viewModelScope.launch {
+            isMovieFavoriteData.value = databaseDataSourceRepository.getAllMovieFavorites().contains(movie)
+        }
     }
 }
