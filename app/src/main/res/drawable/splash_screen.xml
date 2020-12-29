@@ -2,7 +2,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:opacity="opaque">
     <item>
-        <bitmap android:src="@drawable/bg_screen" />
+        <color android:color="@color/primaryColor"/>
     </item>
     <item>
         <bitmap android:src="@drawable/alvaflix" android:gravity="center" />
