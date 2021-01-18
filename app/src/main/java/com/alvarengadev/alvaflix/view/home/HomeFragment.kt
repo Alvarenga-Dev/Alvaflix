@@ -3,7 +3,6 @@ package com.alvarengadev.alvaflix.view.home
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.alvarengadev.alvaflix.R
 import com.alvarengadev.alvaflix.data.domain.Movie
@@ -12,10 +11,11 @@ import com.alvarengadev.alvaflix.view.home.adapter.popular.MoviesPopularAdapter
 import com.alvarengadev.alvaflix.view.home.adapter.recommend.MoviesRecommendAdapter
 import com.alvarengadev.alvaflix.view.interfaces.MovieOnClickListener
 import kotlinx.android.synthetic.main.fragment_home.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
 
-    private val viewModel: HomeViewModel by activityViewModels()
+    private val viewModel: HomeViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -5,15 +5,10 @@ import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.alvarengadev.alvaflix.R
-import com.alvarengadev.alvaflix.data.database.AlvaflixDatabase
 import com.alvarengadev.alvaflix.data.domain.Movie
-import com.alvarengadev.alvaflix.data.repository.DatabaseDataSourceRepository
 import com.alvarengadev.alvaflix.extensions.createToast
 import com.alvarengadev.alvaflix.extensions.layoutHorizontal
 import com.alvarengadev.alvaflix.utils.FormatDate
@@ -21,18 +16,11 @@ import com.alvarengadev.alvaflix.view.details.adapter.similar.MovieSimilarAdapte
 import com.alvarengadev.alvaflix.view.interfaces.MovieOnClickListener
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_details.*
-import kotlinx.coroutines.launch
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailsFragment : Fragment() {
 
-    private val viewModel: DetailsViewModel by activityViewModels(
-        factoryProducer = {
-            val database = AlvaflixDatabase.getInstance(requireContext())
-            DetailsViewModelFactory(
-                databaseDataSourceRepository = DatabaseDataSourceRepository(database.movieFavoritesDao)
-            )
-        }
-    )
+    private val viewModel: DetailsViewModel by viewModel()
     private val args: DetailsFragmentArgs by navArgs()
 
     override fun onCreateView(

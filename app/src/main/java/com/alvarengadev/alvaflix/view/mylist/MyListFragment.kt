@@ -5,27 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.alvarengadev.alvaflix.R
-import com.alvarengadev.alvaflix.data.database.AlvaflixDatabase
 import com.alvarengadev.alvaflix.data.domain.Movie
-import com.alvarengadev.alvaflix.data.repository.DatabaseDataSourceRepository
 import com.alvarengadev.alvaflix.view.interfaces.MovieOnClickListener
 import com.alvarengadev.alvaflix.view.mylist.adapter.MyListAdapter
 import kotlinx.android.synthetic.main.fragment_my_list.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MyListFragment : Fragment() {
 
-    private val viewModel: MyListViewModel by activityViewModels(
-        factoryProducer = {
-            val database = AlvaflixDatabase.getInstance(requireContext())
-            MyListViewModelFactory(
-                databaseDataSourceRepository = DatabaseDataSourceRepository(database.movieFavoritesDao)
-            )
-        }
-    )
+    private val viewModel: MyListViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
