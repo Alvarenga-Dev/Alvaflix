@@ -4,12 +4,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.alvarengadev.alvaflix.data.domain.Movie
-import com.alvarengadev.alvaflix.data.repository.database.DatabaseDataSourceRepository
+import com.alvarengadev.alvaflix.data.repository.database.MovieDaoRepositoryImpl
 import com.alvarengadev.alvaflix.data.repository.api.MoviesApiRepositoryImpl
 import kotlinx.coroutines.launch
 
 class DetailsViewModel(
-    private val databaseDataSourceRepository: DatabaseDataSourceRepository,
+    private val movieDaoRepositoryImpl: MovieDaoRepositoryImpl,
     private val moviesApiRepositoryImpl: MoviesApiRepositoryImpl
 ) : ViewModel() {
 
@@ -18,13 +18,13 @@ class DetailsViewModel(
 
     fun insertMovieFavorite(movie: Movie) {
         viewModelScope.launch {
-            databaseDataSourceRepository.insert(movie)
+            movieDaoRepositoryImpl.insert(movie)
         }
     }
 
     fun deleteMovieFavorite(movie: Movie) {
         viewModelScope.launch {
-            databaseDataSourceRepository.delete(movie)
+            movieDaoRepositoryImpl.delete(movie)
         }
     }
 
@@ -36,7 +36,7 @@ class DetailsViewModel(
 
     fun isMovieFavorite(movie: Movie) {
         viewModelScope.launch {
-            isMovieFavoriteData.value = databaseDataSourceRepository.getAllMovieFavorites().contains(movie)
+            isMovieFavoriteData.value = movieDaoRepositoryImpl.getAllMovieFavorites().contains(movie)
         }
     }
 }

@@ -5,16 +5,18 @@ import com.alvarengadev.alvaflix.data.database.entity.toMovies
 import com.alvarengadev.alvaflix.data.domain.Movie
 import com.alvarengadev.alvaflix.data.domain.toEntity
 
-class DatabaseDataSourceRepository(private val movieFavoritesDao: MovieFavoritesDao) {
-    suspend fun insert(movie: Movie) {
+class MovieDaoRepositoryImpl(
+    private val movieFavoritesDao: MovieFavoritesDao
+) : MovieDaoRepository {
+    override suspend fun insert(movie: Movie) {
         movieFavoritesDao.insert(toEntity(movie))
     }
 
-    suspend fun delete(movie: Movie) {
+    override suspend fun delete(movie: Movie) {
         movieFavoritesDao.delete(toEntity(movie))
     }
 
-    suspend fun getAllMovieFavorites(): ArrayList<Movie> {
+    override suspend fun getAllMovieFavorites(): ArrayList<Movie> {
         return toMovies(movieFavoritesDao.getAll())
     }
 }

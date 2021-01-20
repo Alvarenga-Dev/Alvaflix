@@ -3,7 +3,7 @@ package com.alvarengadev.alvaflix.di
 import androidx.room.Room
 import com.alvarengadev.alvaflix.data.api.network.MoviesApi
 import com.alvarengadev.alvaflix.data.database.AlvaflixDatabase
-import com.alvarengadev.alvaflix.data.repository.database.DatabaseDataSourceRepository
+import com.alvarengadev.alvaflix.data.repository.database.MovieDaoRepositoryImpl
 import com.alvarengadev.alvaflix.data.repository.api.MoviesApiRepositoryImpl
 import com.alvarengadev.alvaflix.data.repository.api.MoviesApiRepository
 import com.alvarengadev.alvaflix.utils.Constants
@@ -14,6 +14,21 @@ import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+
+val apiModules = module {
+    val retrofit = Retrofit.Builder()
+        .baseUrl("https://api.themoviedb.org/3/")
+        .addConverterFactory(MoshiConverterFactory.create())
+        .build()
+
+    single { MoviesApi(retrofit = retrofit) }
+
+    fun provideMoviesApiRepository(moviesApi: MoviesApi): MoviesApiRepository {
+        return MoviesApiRepositoryImpl(moviesApi)
+    }
+
+    single { provideMoviesApiRepository(get()) }
+}
 
 val databaseModule = module {
     single {
@@ -39,7 +54,7 @@ val homeModule = module {
 val myListModule = module {
     viewModel {
         MyListViewModel(
-            DatabaseDataSourceRepository(
+            MovieDaoRepositoryImpl(
                 movieFavoritesDao = get()
             )
         )
@@ -49,27 +64,10 @@ val myListModule = module {
 val detailsModule = module {
     viewModel {
         DetailsViewModel(
-            DatabaseDataSourceRepository(
+            MovieDaoRepositoryImpl(
                 movieFavoritesDao = get()
             ),
-            MoviesApiRepositoryImpl(
-                moviesApi = get()
-            )
+            moviesApiRepositoryImpl = get()
         )
     }
-}
-
-val apiModules = module {
-    val retrofit = Retrofit.Builder()
-        .baseUrl("https://api.themoviedb.org/3/")
-        .addConverterFactory(MoshiConverterFactory.create())
-        .build()
-
-    single { MoviesApi(retrofit = retrofit) }
-
-    fun provideMoviesApiRepository(moviesApi: MoviesApi): MoviesApiRepository {
-        return MoviesApiRepositoryImpl(moviesApi)
-    }
-
-    single { provideMoviesApiRepository(get()) }
 }
