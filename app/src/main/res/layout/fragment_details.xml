@@ -83,7 +83,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:background="@drawable/foreground_header_details"
+                android:background="@drawable/foreground_header"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_details_poster_movie"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -16,7 +16,7 @@
             android:layout_width="0dp"
             android:layout_height="330dp"
             android:contentDescription="@string/header_image_description_home"
-            android:foreground="@drawable/foreground_header_home"
+            android:foreground="@drawable/foreground_header"
             android:scaleType="centerCrop"
             android:src="@drawable/header_home"
             app:layout_constraintEnd_toEndOf="parent"
