@@ -1,10 +1,7 @@
-package com.alvarengadev.alvaflix
+package com.alvarengadev.alvaflix.core
 
 import android.app.Application
-import com.alvarengadev.alvaflix.di.databaseModule
-import com.alvarengadev.alvaflix.di.detailsModule
-import com.alvarengadev.alvaflix.di.homeModule
-import com.alvarengadev.alvaflix.di.myListModule
+import com.alvarengadev.alvaflix.di.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -18,6 +15,7 @@ class AlvaflixApplication : Application() {
             androidContext(this@AlvaflixApplication)
 
             modules(
+                apiModules,
                 databaseModule,
                 homeModule,
                 myListModule,

@@ -4,12 +4,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.alvarengadev.alvaflix.data.domain.Movie
-import com.alvarengadev.alvaflix.data.repository.ApiDataSourceRepository
-import com.alvarengadev.alvaflix.data.repository.DatabaseDataSourceRepository
+import com.alvarengadev.alvaflix.data.repository.database.DatabaseDataSourceRepository
+import com.alvarengadev.alvaflix.data.repository.api.MoviesApiRepositoryImpl
 import kotlinx.coroutines.launch
 
 class DetailsViewModel(
-    private val databaseDataSourceRepository: DatabaseDataSourceRepository
+    private val databaseDataSourceRepository: DatabaseDataSourceRepository,
+    private val moviesApiRepositoryImpl: MoviesApiRepositoryImpl
 ) : ViewModel() {
 
     val listMovieSimilarData = MutableLiveData<ArrayList<Movie>>()
@@ -28,7 +29,9 @@ class DetailsViewModel(
     }
 
     fun getListMovieSimilar(movieId: Int) {
-        ApiDataSourceRepository.callMoviesSimilar(listMovieSimilarData, movieId)
+        viewModelScope.launch {
+            listMovieSimilarData.value = moviesApiRepositoryImpl.getMoviesSimilar(movieId)
+        }
     }
 
     fun isMovieFavorite(movie: Movie) {

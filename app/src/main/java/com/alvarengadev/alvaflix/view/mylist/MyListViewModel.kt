@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.alvarengadev.alvaflix.data.domain.Movie
-import com.alvarengadev.alvaflix.data.repository.DatabaseDataSourceRepository
+import com.alvarengadev.alvaflix.data.repository.database.DatabaseDataSourceRepository
 import kotlinx.coroutines.launch
 
 class MyListViewModel(

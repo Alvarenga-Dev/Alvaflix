@@ -1,4 +1,4 @@
-package com.alvarengadev.alvaflix.data.repository
+package com.alvarengadev.alvaflix.data.repository.database
 
 import com.alvarengadev.alvaflix.data.database.dao.MovieFavoritesDao
 import com.alvarengadev.alvaflix.data.database.entity.toMovies
