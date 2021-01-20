@@ -28,4 +28,7 @@
     <!-- My List -->
     <string name="title_my_list">My favorites movies</string>
 
+    <!-- Search -->
+    <string name="title_search">Search</string>
+
 </resources>

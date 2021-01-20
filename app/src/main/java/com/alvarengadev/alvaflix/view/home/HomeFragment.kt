@@ -30,16 +30,18 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ) {
         super.onViewCreated(view, savedInstanceState)
-        setHasOptionsMenu(true)
 
         initRcyPopular()
         initRcyRecommends()
-        initButtonMyList()
+        initButtons()
     }
 
-    private fun initButtonMyList() {
+    private fun initButtons() {
         btn_home_my_list.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_myListFragment)
+        }
+        ib_search.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
         }
     }
 
@@ -79,10 +81,4 @@ class HomeFragment : Fragment() {
             }
         })
     }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.home_menu, menu)
-    }
-
 }

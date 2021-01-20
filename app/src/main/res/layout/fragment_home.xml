@@ -93,17 +93,6 @@
 
         </androidx.recyclerview.widget.RecyclerView>
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:layout_constraintTop_toTopOf="parent"
-            app:menu="@menu/home_menu"
-            tools:layout_editor_absoluteX="206dp" />
-
         <ImageView
             android:id="@+id/tv_home_image_alvaflix"
             android:layout_width="wrap_content"
@@ -113,6 +102,17 @@
             android:contentDescription="@string/alvaflix_image_description_home"
             android:src="@drawable/ic_logo_alvaflix"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/ib_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/title_menu_home_search"
+            android:padding="16dp"
+            android:src="@drawable/ic_search"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,9 @@
     <color name="secondaryColor">#b61414</color>
     <color name="secondaryLightColor">#f0513d</color>
     <color name="secondaryDarkColor">#7e0000</color>
+    <color name="TertiaryColor">#3B3B3B</color>
+    <color name="TertiaryDarkColor">#3C3C3C</color>
+    <color name="TertiaryLightColor">#929292</color>
     <!-- Text Color -->
     <color name="textColor">#f1f1f1</color>
     <!-- Color Buttons -->
