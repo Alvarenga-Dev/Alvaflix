@@ -5,7 +5,6 @@ import com.alvarengadev.alvaflix.data.api.network.MoviesApi
 import com.alvarengadev.alvaflix.data.database.AlvaflixDatabase
 import com.alvarengadev.alvaflix.data.repository.database.MovieDaoRepositoryImpl
 import com.alvarengadev.alvaflix.data.repository.api.MoviesApiRepositoryImpl
-import com.alvarengadev.alvaflix.data.repository.api.MoviesApiRepository
 import com.alvarengadev.alvaflix.utils.Constants
 import com.alvarengadev.alvaflix.view.details.DetailsViewModel
 import com.alvarengadev.alvaflix.view.home.HomeViewModel
@@ -22,12 +21,6 @@ val apiModules = module {
         .build()
 
     single { MoviesApi(retrofit = retrofit) }
-
-    fun provideMoviesApiRepository(moviesApi: MoviesApi): MoviesApiRepository {
-        return MoviesApiRepositoryImpl(moviesApi)
-    }
-
-    single { provideMoviesApiRepository(get()) }
 }
 
 val databaseModule = module {
