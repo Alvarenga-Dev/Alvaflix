@@ -67,7 +67,9 @@ val detailsModule = module {
             MovieDaoRepositoryImpl(
                 movieFavoritesDao = get()
             ),
-            moviesApiRepositoryImpl = get()
+            MoviesApiRepositoryImpl(
+                moviesApi = get()
+            )
         )
     }
 }
