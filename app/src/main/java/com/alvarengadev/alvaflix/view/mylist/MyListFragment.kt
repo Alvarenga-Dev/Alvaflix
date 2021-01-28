@@ -32,7 +32,6 @@ class MyListFragment : Fragment() {
             findNavController().popBackStack()
         }
 
-        viewModel.getAllMovieFavorites()
         viewModel.listMovieFavorites.observe(viewLifecycleOwner, { listMovieFavorites ->
             val myListAdapter = MyListAdapter(listMovieFavorites)
 

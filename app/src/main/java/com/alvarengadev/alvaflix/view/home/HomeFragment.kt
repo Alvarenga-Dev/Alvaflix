@@ -46,7 +46,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun initRcyPopular() {
-        viewModel.getListMoviePopular()
         viewModel.listMoviePopularData.observe(viewLifecycleOwner, { moviesPopular ->
             val popularMoviesAdapter = MoviesPopularAdapter(moviesPopular)
 
@@ -64,7 +63,6 @@ class HomeFragment : Fragment() {
    }
 
     private fun initRcyRecommends() {
-        viewModel.getListMovieRecommend()
         viewModel.listMovieRecommendData.observe(viewLifecycleOwner, { movieRecommend ->
             val movieRecommendAdapter = MoviesRecommendAdapter(movieRecommend)
 

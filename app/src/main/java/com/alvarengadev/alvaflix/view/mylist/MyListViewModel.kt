@@ -13,6 +13,10 @@ class MyListViewModel(
 
     val listMovieFavorites = MutableLiveData<ArrayList<Movie>>()
 
+    init {
+        getAllMovieFavorites()
+    }
+
     fun getAllMovieFavorites() {
         viewModelScope.launch {
             listMovieFavorites.value = movieDaoRepositoryImpl.getAllMovieFavorites()

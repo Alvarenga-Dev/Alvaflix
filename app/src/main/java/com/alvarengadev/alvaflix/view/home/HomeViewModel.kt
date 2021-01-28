@@ -14,6 +14,11 @@ class HomeViewModel(
     val listMoviePopularData = MutableLiveData<ArrayList<Movie>>()
     val listMovieRecommendData = MutableLiveData<ArrayList<Movie>>()
 
+    init {
+        getListMoviePopular()
+        getListMovieRecommend()
+    }
+
     fun getListMoviePopular() {
         viewModelScope.launch {
             listMoviePopularData.value = moviesApiRepositoryImpl.getMoviesPopular()
