@@ -38,18 +38,37 @@ class SearchFragment : Fragment() {
             viewModel.search(toLowerCase(editable.toString()))
         }
         viewModel.listSearch.observe(viewLifecycleOwner, { listSearch ->
-            val searchAdapter = SearchAdapter(listSearch)
-            rcy_search_results.apply {
-                adapter = searchAdapter
-                layoutManager = LinearLayoutManager(context)
-            }
-
-            searchAdapter.setOnClickListener(object : MovieOnClickListener {
-                override fun onItemClick(movie: Movie) {
-                    val directions = SearchFragmentDirections.actionSearchFragmentToDetailsFragment(movie)
-                    findNavController().navigate(directions)
+            if (listSearch != null) {
+                val searchAdapter = SearchAdapter(listSearch)
+                rcy_search_results.apply {
+                    adapter = searchAdapter
+                    layoutManager = LinearLayoutManager(context)
                 }
-            })
+
+                showSearch()
+
+                searchAdapter.setOnClickListener(object : MovieOnClickListener {
+                    override fun onItemClick(movie: Movie) {
+                        val directions = SearchFragmentDirections.actionSearchFragmentToDetailsFragment(movie)
+                        findNavController().navigate(directions)
+                    }
+                })
+            } else {
+                hideSearch()
+            }
         })
+    }
+
+    private fun showSearch() {
+        rcy_search_results.visibility = View.VISIBLE
+        tv_search_title_results.visibility = View.VISIBLE
+        tv_search_noting_found.visibility = View.GONE
+    }
+
+    private fun hideSearch() {
+        rcy_search_results.visibility = View.GONE
+        tv_search_title_results.visibility = View.GONE
+        tv_search_noting_found.visibility = View.VISIBLE
+
     }
 }
