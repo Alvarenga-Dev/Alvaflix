@@ -33,7 +33,7 @@ class MyListFragment : Fragment() {
         }
 
         viewModel.listMovieFavorites.observe(viewLifecycleOwner, { listMovieFavorites ->
-            if (listMovieFavorites != null) {
+            if (listMovieFavorites != null && listMovieFavorites.size > 0) {
                 val myListAdapter = MyListAdapter(listMovieFavorites)
 
                 myListAdapter.setOnClickListener(object : MovieOnClickListener {
