@@ -21,7 +21,7 @@ class MyListAdapter(
         parent: ViewGroup,
         viewType: Int
     ): MyListViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_movies, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list_horizontal_movies, parent, false)
         return MyListViewHolder(view, movieOnClickListener, listMovieFavorites)
     }
 

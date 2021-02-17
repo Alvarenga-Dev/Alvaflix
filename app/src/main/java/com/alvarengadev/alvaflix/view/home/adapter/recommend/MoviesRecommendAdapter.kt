@@ -23,7 +23,7 @@ class MoviesRecommendAdapter(
     ): MoviesRecommendViewHolder {
         val view = LayoutInflater
             .from(parent.context)
-            .inflate(R.layout.list_movies, parent, false)
+            .inflate(R.layout.item_list_horizontal_movies, parent, false)
 
         return MoviesRecommendViewHolder(view, movieOnClickListener, listRecommendMovies)
     }

@@ -12,7 +12,7 @@ import com.alvarengadev.alvaflix.data.domain.Movie
 import com.alvarengadev.alvaflix.extensions.createToast
 import com.alvarengadev.alvaflix.extensions.layoutHorizontal
 import com.alvarengadev.alvaflix.utils.FormatDate
-import com.alvarengadev.alvaflix.view.details.adapter.similar.MovieSimilarAdapter
+import com.alvarengadev.alvaflix.view.details.adapter.MovieSimilarAdapter
 import com.alvarengadev.alvaflix.view.interfaces.MovieOnClickListener
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_details.*

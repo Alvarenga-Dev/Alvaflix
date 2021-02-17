@@ -1,4 +1,4 @@
-package com.alvarengadev.alvaflix.view.details.adapter.similar
+package com.alvarengadev.alvaflix.view.details.adapter
 
 import android.view.View
 import android.widget.ImageView

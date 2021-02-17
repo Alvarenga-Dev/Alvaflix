@@ -1,4 +1,4 @@
-package com.alvarengadev.alvaflix.view.details.adapter.similar
+package com.alvarengadev.alvaflix.view.details.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -25,7 +25,7 @@ class MovieSimilarAdapter(
     ): MovieSimilarViewHolder {
         val view = LayoutInflater
             .from(parent.context)
-            .inflate(R.layout.list_movies, parent, false)
+            .inflate(R.layout.item_list_horizontal_movies, parent, false)
 
         return MovieSimilarViewHolder(view, movieOnClickListener, listMovieSimilar)
     }
