@@ -25,7 +25,7 @@
     </style>
 
     <style name="TitleStyle" parent="TextStyle">
-        <item name="android:textSize">@dimen/title_size</item>
+        <item name="android:textSize">@dimen/size_16sp</item>
     </style>
 
     <style name="ButtonStyle">

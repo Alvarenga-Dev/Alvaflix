@@ -33,18 +33,27 @@ class MyListFragment : Fragment() {
         }
 
         viewModel.listMovieFavorites.observe(viewLifecycleOwner, { listMovieFavorites ->
-            val myListAdapter = MyListAdapter(listMovieFavorites)
+            if (listMovieFavorites != null) {
+                val myListAdapter = MyListAdapter(listMovieFavorites)
 
-            myListAdapter.setOnClickListener(object : MovieOnClickListener {
-                override fun onItemClick(movie: Movie) {
-                    val directions = MyListFragmentDirections.actionMyListFragmentToDetailsFragment(movie)
-                    findNavController().navigate(directions)
+                myListAdapter.setOnClickListener(object : MovieOnClickListener {
+                    override fun onItemClick(movie: Movie) {
+                        val directions =
+                            MyListFragmentDirections.actionMyListFragmentToDetailsFragment(movie)
+                        findNavController().navigate(directions)
+                    }
+                })
+
+                rcy_my_list_favorites.visibility = View.VISIBLE
+                container_started.visibility = View.GONE
+
+                rcy_my_list_favorites.apply {
+                    adapter = myListAdapter
+                    layoutManager = GridLayoutManager(context, 3)
                 }
-            })
-
-            rcy_my_list_favorites.apply {
-                adapter = myListAdapter
-                layoutManager = GridLayoutManager(context, 3)
+            } else {
+                rcy_my_list_favorites.visibility = View.GONE
+                container_started.visibility = View.VISIBLE
             }
         })
     }
