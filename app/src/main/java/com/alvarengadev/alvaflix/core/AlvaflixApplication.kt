@@ -19,7 +19,8 @@ class AlvaflixApplication : Application() {
                 databaseModule,
                 homeModule,
                 myListModule,
-                detailsModule
+                detailsModule,
+                searchModule
             )
         }
     }

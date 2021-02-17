@@ -6,10 +6,16 @@ import java.util.*
 
 class FormatDate {
     companion object {
-        fun getDate(date: String): String {
+        fun getLongDate(date: String): String {
             val formatDate = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
             val day = formatDate.parse(date)!!
             return DateFormat.getDateInstance(DateFormat.LONG, Locale.ENGLISH).format(day)
+        }
+
+        fun getMediumDate(date: String): String {
+            val formatDate = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
+            val day = formatDate.parse(date)!!
+            return DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.ENGLISH).format(day)
         }
     }
 }

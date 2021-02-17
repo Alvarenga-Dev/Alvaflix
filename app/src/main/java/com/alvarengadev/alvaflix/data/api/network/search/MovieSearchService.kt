@@ -10,7 +10,7 @@ interface MovieSearchService {
 
     @GET("search/movie")
     fun search(
-        @Query("query") searchMovie: String,
+        @Query("query") searchMovie: String?,
         @Query("api_key") apiKey: String = API_KEY
     ) : Call<MovieSearchResult>
 }

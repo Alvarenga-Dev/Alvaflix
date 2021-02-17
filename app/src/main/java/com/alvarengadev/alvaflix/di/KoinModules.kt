@@ -9,6 +9,7 @@ import com.alvarengadev.alvaflix.utils.Constants
 import com.alvarengadev.alvaflix.view.details.DetailsViewModel
 import com.alvarengadev.alvaflix.view.home.HomeViewModel
 import com.alvarengadev.alvaflix.view.mylist.MyListViewModel
+import com.alvarengadev.alvaflix.view.search.SearchViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -60,6 +61,16 @@ val detailsModule = module {
             MovieDaoRepositoryImpl(
                 movieFavoritesDao = get()
             ),
+            MoviesApiRepositoryImpl(
+                moviesApi = get()
+            )
+        )
+    }
+}
+
+val searchModule = module {
+    viewModel {
+        SearchViewModel(
             MoviesApiRepositoryImpl(
                 moviesApi = get()
             )

@@ -46,7 +46,7 @@ class DetailsFragment : Fragment() {
         tv_details_title_movie.text = movie.title
         tv_details_value_rating_movie.text = movie.rating
         tv_details_year_movie.text =
-            getString(R.string.label_date_movies_details, FormatDate.getDate(movie.date))
+            getString(R.string.label_date_movies_details, FormatDate.getLongDate(movie.date))
         tv_details_description_movie.text = movie.description
 
         showIconMyList(movie)

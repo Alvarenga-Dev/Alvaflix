@@ -41,7 +41,7 @@ class MoviesApiRepositoryImpl(
         }
     }
 
-    override suspend fun getMoviesSearch(movieName: String): ArrayList<Movie>? {
+    override suspend fun getMoviesSearch(movieName: String?): ArrayList<Movie>? {
         val service = moviesApi.movieSearchService().search(movieName).awaitResponse()
         val body = service.body()
         return if (service.isSuccessful && body != null) {

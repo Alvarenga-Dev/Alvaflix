@@ -10,15 +10,15 @@
         android:id="@+id/cardView"
         style="@style/CardStyle"
         android:layout_width="175dp"
-        android:layout_height="110dp"
+        android:layout_height="125dp"
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/iv_movie_poster_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:scaleType="centerCrop"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
     </androidx.cardview.widget.CardView>
@@ -29,8 +29,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -68,5 +70,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tv_description_movie_search"
         app:layout_constraintTop_toBottomOf="@+id/tv_description_movie_search"
+        app:layout_constraintVertical_bias="0.0"
         tools:text="Nov 12, 2019" />
 </androidx.constraintlayout.widget.ConstraintLayout>

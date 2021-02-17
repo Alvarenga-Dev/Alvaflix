@@ -6,5 +6,5 @@ interface MoviesApiRepository {
     suspend fun getMoviesPopular(): ArrayList<Movie>?
     suspend fun getMoviesRecommend(): ArrayList<Movie>?
     suspend fun getMoviesSimilar(movieId: Int): ArrayList<Movie>?
-    suspend fun getMoviesSearch(movieName: String): ArrayList<Movie>?
+    suspend fun getMoviesSearch(movieName: String?): ArrayList<Movie>?
 }
