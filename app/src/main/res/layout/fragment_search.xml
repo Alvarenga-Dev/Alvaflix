@@ -16,9 +16,9 @@
             android:id="@+id/text_input_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
             android:clipToPadding="false"
             android:textColorHint="@color/TertiaryLightColor"
             app:hintAnimationEnabled="false"
@@ -35,6 +35,7 @@
                 android:fontFamily="@font/opensans_semibold"
                 android:gravity="fill_horizontal|fill_vertical"
                 android:hint="Search your favorites movies!"
+                android:imeOptions="actionDone"
                 android:lineSpacingExtra="8sp"
                 android:padding="8dp"
                 android:textSize="13sp" />
@@ -49,6 +50,7 @@
             android:text="Nothing found..."
             android:textColor="@color/TertiaryLightColor"
             android:textSize="24sp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -62,15 +64,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_search_title_results" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_search_title_results"
+            tools:listitem="@layout/item_search_movies"/>
 
         <TextView
             android:id="@+id/tv_search_title_results"
             style="@style/TitleStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="11dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
             android:text="Results"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
