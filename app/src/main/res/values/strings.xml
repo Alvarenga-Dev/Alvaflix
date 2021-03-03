@@ -27,8 +27,12 @@
 
     <!-- My List -->
     <string name="title_my_list">My favorites movies</string>
+    <string name="title_started_search">Start searching for your favorite movies!</string>
 
     <!-- Search -->
     <string name="title_search">Search</string>
+    <string name="hint_search_text_input_layout">Search your favorites movies!</string>
+    <string name="title_search_results">Results</string>
+    <string name="title_search_noting_found">Nothing found…</string>
 
 </resources>

@@ -60,14 +60,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_tile_started"
+            android:id="@+id/tv_title_started"
             style="@style/TitleStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="48dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="48dp"
-            android:text="Start searching for your favorite movies!"
+            android:text="@string/title_started_search"
             android:textAlignment="center"
             android:textSize="@dimen/size_24sp"
             app:layout_constraintEnd_toEndOf="parent"
