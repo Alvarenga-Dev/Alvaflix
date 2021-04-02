@@ -19,13 +19,13 @@ class HomeViewModel(
         getListMovieRecommend()
     }
 
-    fun getListMoviePopular() {
+    private fun getListMoviePopular() {
         viewModelScope.launch {
             listMoviePopularData.value = moviesApiRepositoryImpl.getMoviesPopular()
         }
     }
 
-    fun getListMovieRecommend() {
+    private fun getListMovieRecommend() {
         viewModelScope.launch {
             listMovieRecommendData.value = moviesApiRepositoryImpl.getMoviesRecommend()
         }
