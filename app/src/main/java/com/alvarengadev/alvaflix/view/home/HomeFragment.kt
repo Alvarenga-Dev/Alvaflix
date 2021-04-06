@@ -6,46 +6,40 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.alvarengadev.alvaflix.R
 import com.alvarengadev.alvaflix.data.domain.Movie
+import com.alvarengadev.alvaflix.databinding.FragmentHomeBinding
 import com.alvarengadev.alvaflix.extensions.layoutHorizontal
 import com.alvarengadev.alvaflix.view.home.adapter.popular.MoviesPopularAdapter
 import com.alvarengadev.alvaflix.view.home.adapter.recommend.MoviesRecommendAdapter
 import com.alvarengadev.alvaflix.view.interfaces.MovieOnClickListener
-import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private val viewModel: HomeViewModel by viewModel()
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
-    }
 
     override fun onViewCreated(
         view: View,
         savedInstanceState: Bundle?
     ) {
         super.onViewCreated(view, savedInstanceState)
+        val homeBinding = FragmentHomeBinding.bind(view)
 
-        initRcyPopular()
-        initRcyRecommends()
-        initButtons()
+        initRcyPopular(homeBinding)
+        initRcyRecommends(homeBinding)
+        initButtons(homeBinding)
     }
 
-    private fun initButtons() {
-        btn_home_my_list.setOnClickListener {
+    private fun initButtons(homeBinding: FragmentHomeBinding) {
+
+        homeBinding.btnHomeMyList.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_myListFragment)
         }
-        ib_search.setOnClickListener {
+        homeBinding.ibSearch.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
         }
     }
 
-    private fun initRcyPopular() {
+    private fun initRcyPopular(homeBinding: FragmentHomeBinding) {
         viewModel.listMoviePopularData.observe(viewLifecycleOwner, { moviesPopular ->
             val popularMoviesAdapter = MoviesPopularAdapter(moviesPopular)
 
@@ -55,14 +49,14 @@ class HomeFragment : Fragment() {
                     findNavController().navigate(direction)
                 }
             })
-            rcy_home_popular_movies.apply {
+            homeBinding.rcyHomePopularMovies.apply {
                 adapter = popularMoviesAdapter
                 layoutManager = this.layoutHorizontal()
             }
         })
    }
 
-    private fun initRcyRecommends() {
+    private fun initRcyRecommends(homeBinding: FragmentHomeBinding) {
         viewModel.listMovieRecommendData.observe(viewLifecycleOwner, { movieRecommend ->
             val movieRecommendAdapter = MoviesRecommendAdapter(movieRecommend)
 
@@ -73,7 +67,7 @@ class HomeFragment : Fragment() {
                 }
             })
 
-            rcy_recommend_movies.apply {
+            homeBinding.rcyRecommendMovies.apply {
                 adapter = movieRecommendAdapter
                 layoutManager = this.layoutHorizontal()
             }

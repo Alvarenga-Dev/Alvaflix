@@ -1,61 +1,54 @@
 package com.alvarengadev.alvaflix.view.details
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.alvarengadev.alvaflix.R
 import com.alvarengadev.alvaflix.data.domain.Movie
+import com.alvarengadev.alvaflix.databinding.FragmentDetailsBinding
 import com.alvarengadev.alvaflix.extensions.createToast
 import com.alvarengadev.alvaflix.extensions.layoutHorizontal
 import com.alvarengadev.alvaflix.utils.FormatDate
 import com.alvarengadev.alvaflix.view.details.adapter.MovieSimilarAdapter
 import com.alvarengadev.alvaflix.view.interfaces.MovieOnClickListener
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_details.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class DetailsFragment : Fragment() {
+class DetailsFragment : Fragment(R.layout.fragment_details) {
 
     private val viewModel: DetailsViewModel by viewModel()
     private val args: DetailsFragmentArgs by navArgs()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+    override fun onViewCreated(
+        view: View,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_details, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    ) {
         super.onViewCreated(view, savedInstanceState)
-        initComponents()
+        val detailsBinding = FragmentDetailsBinding.bind(view)
+        initComponents(detailsBinding)
     }
 
-    private fun initComponents() {
-        ib_details_back.setOnClickListener {
+    private fun initComponents(detailsBinding: FragmentDetailsBinding) {
+        detailsBinding.ibDetailsBack.setOnClickListener {
             findNavController().popBackStack()
         }
 
         val movie = args.movie
 
-        tv_details_title_movie.text = movie.title
-        tv_details_value_rating_movie.text = movie.rating
-        tv_details_year_movie.text =
-            getString(R.string.label_date_movies_details, FormatDate.getLongDate(movie.date))
-        tv_details_description_movie.text = movie.description
+        detailsBinding.tvDetailsTitleMovie.text = movie.title
+        detailsBinding.tvDetailsValueRatingMovie.text = movie.rating
+        detailsBinding.tvDetailsYearMovie.text = getString(R.string.label_date_movies_details, FormatDate.getLongDate(movie.date))
+        detailsBinding.tvDetailsDescriptionMovie.text = movie.description
 
-        showIconMyList(movie)
+        showIconMyList(movie, detailsBinding)
 
         val imagePoster = movie.posterDetails ?: movie.poster
 
         Picasso.get()
             .load("https://image.tmdb.org/t/p/w500/${imagePoster}")
-            .into(iv_details_poster_movie)
+            .into(detailsBinding.ivDetailsPosterMovie)
 
         viewModel.getListMovieSimilar(movie.id)
         viewModel.listMovieSimilarData.observe(viewLifecycleOwner, { listMoviesSimilar ->
@@ -69,11 +62,11 @@ class DetailsFragment : Fragment() {
             })
 
             if (listMoviesSimilar.isNullOrEmpty()) {
-                tv_details_similar_movies.visibility = View.GONE
-                rcy_details_similar_movies.visibility = View.GONE
+                detailsBinding.tvDetailsSimilarMovies.visibility = View.GONE
+                detailsBinding.rcyDetailsSimilarMovies.visibility = View.GONE
             } else {
-                tv_details_similar_movies.visibility = View.VISIBLE
-                rcy_details_similar_movies.apply {
+                detailsBinding.tvDetailsSimilarMovies.visibility = View.VISIBLE
+                detailsBinding.rcyDetailsSimilarMovies.apply {
                     visibility = View.VISIBLE
                     adapter = movieSimilarAdapter
                     layoutManager = this.layoutHorizontal()
@@ -82,28 +75,31 @@ class DetailsFragment : Fragment() {
         })
     }
 
-    private fun showIconMyList(movie: Movie) {
+    private fun showIconMyList(
+        movie: Movie,
+        detailsBinding: FragmentDetailsBinding
+    ) {
         viewModel.isMovieFavorite(movie)
         viewModel.isMovieFavoriteData.observe(viewLifecycleOwner, { isFavorite ->
             if (isFavorite) {
-                btn_linear_details_my_list.setOnClickListener(deleteMovieFavorite(movie))
-                iv_details_icon_my_list.setImageResource(R.drawable.ic_check)
+                detailsBinding.btnLinearDetailsMyList.setOnClickListener(deleteMovieFavorite(movie, detailsBinding))
+                detailsBinding.ivDetailsIconMyList.setImageResource(R.drawable.ic_check)
             } else {
-                btn_linear_details_my_list.setOnClickListener(addMovieFavorite(movie))
-                iv_details_icon_my_list.setImageResource(R.drawable.ic_plus)
+                detailsBinding.btnLinearDetailsMyList.setOnClickListener(addMovieFavorite(movie, detailsBinding))
+                detailsBinding.ivDetailsIconMyList.setImageResource(R.drawable.ic_plus)
             }
         })
     }
 
-    private fun addMovieFavorite(movie: Movie) = View.OnClickListener {
+    private fun addMovieFavorite(movie: Movie, detailsBinding: FragmentDetailsBinding) = View.OnClickListener {
         viewModel.insertMovieFavorite(movie)
-        iv_details_icon_my_list.setImageResource(R.drawable.ic_check)
+        detailsBinding.ivDetailsIconMyList.setImageResource(R.drawable.ic_check)
         requireContext().createToast("Add in My List")
     }
 
-    private fun deleteMovieFavorite(movie: Movie) = View.OnClickListener {
+    private fun deleteMovieFavorite(movie: Movie, detailsBinding: FragmentDetailsBinding) = View.OnClickListener {
         viewModel.deleteMovieFavorite(movie)
-        iv_details_icon_my_list.setImageResource(R.drawable.ic_plus)
+        detailsBinding.ivDetailsIconMyList.setImageResource(R.drawable.ic_plus)
         requireContext().createToast("Delete in My List")
     }
 }

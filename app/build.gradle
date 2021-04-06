@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'kotlin-kapt'
 
@@ -31,6 +30,10 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+
+    viewBinding {
+        enabled = true
     }
 }
 
