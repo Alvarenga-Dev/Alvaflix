@@ -5,19 +5,21 @@ import com.alvarengadev.alvaflix.data.domain.Movie
 
 class MovieRecommendMapper {
     companion object {
-        fun responseToDomain(listResponseBody: List<MovieRecommendResponseBody>) : ArrayList<Movie> {
+        fun responseToDomain(listResponseBody: List<MovieRecommendResponseBody>?) : ArrayList<Movie> {
             val listMovieRecommend = ArrayList<Movie>()
-            for (movieRecommendResponse in listResponseBody) {
-                val movieRecommend = Movie(
-                    movieRecommendResponse.id,
-                    movieRecommendResponse.title,
-                    movieRecommendResponse.poster,
-                    movieRecommendResponse.posterDetails,
-                    movieRecommendResponse.description,
-                    movieRecommendResponse.rating.toString(),
-                    movieRecommendResponse.date
-                )
-                listMovieRecommend.add(movieRecommend)
+            if (listResponseBody != null) {
+                for (movieRecommendResponse in listResponseBody) {
+                    val movieRecommend = Movie(
+                        movieRecommendResponse.id,
+                        movieRecommendResponse.title,
+                        movieRecommendResponse.poster,
+                        movieRecommendResponse.posterDetails,
+                        movieRecommendResponse.description,
+                        movieRecommendResponse.rating.toString(),
+                        movieRecommendResponse.date
+                    )
+                    listMovieRecommend.add(movieRecommend)
+                }
             }
             return listMovieRecommend
         }

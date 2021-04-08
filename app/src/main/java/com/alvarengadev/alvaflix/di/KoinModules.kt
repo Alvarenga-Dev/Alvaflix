@@ -1,7 +1,10 @@
 package com.alvarengadev.alvaflix.di
 
 import androidx.room.Room
-import com.alvarengadev.alvaflix.data.api.network.MoviesApi
+import com.alvarengadev.alvaflix.data.api.network.popular.MoviePopularService
+import com.alvarengadev.alvaflix.data.api.network.recommend.MovieRecommendService
+import com.alvarengadev.alvaflix.data.api.network.search.MovieSearchService
+import com.alvarengadev.alvaflix.data.api.network.similar.MovieSimilarService
 import com.alvarengadev.alvaflix.data.database.AlvaflixDatabase
 import com.alvarengadev.alvaflix.data.repository.database.MovieDaoRepositoryImpl
 import com.alvarengadev.alvaflix.data.repository.api.MoviesApiRepositoryImpl
@@ -21,7 +24,21 @@ val apiModules = module {
         .addConverterFactory(MoshiConverterFactory.create())
         .build()
 
-    single { MoviesApi(retrofit = retrofit) }
+    factory { retrofit.create(MoviePopularService::class.java) }
+    factory { retrofit.create(MovieRecommendService::class.java) }
+    factory { retrofit.create(MovieSimilarService::class.java) }
+    factory { retrofit.create(MovieSearchService::class.java) }
+}
+
+val repositoryModule = module {
+    single {
+        MoviesApiRepositoryImpl(
+            moviePopularService = get(),
+            movieRecommendService = get(),
+            movieSearchService = get(),
+            movieSimilarService = get()
+        )
+    }
 }
 
 val databaseModule = module {
@@ -38,9 +55,7 @@ val databaseModule = module {
 val homeModule = module {
     viewModel {
         HomeViewModel(
-            MoviesApiRepositoryImpl(
-                moviesApi = get()
-            )
+            moviesApiRepositoryImpl = get()
         )
     }
 }
@@ -61,9 +76,7 @@ val detailsModule = module {
             MovieDaoRepositoryImpl(
                 movieFavoritesDao = get()
             ),
-            MoviesApiRepositoryImpl(
-                moviesApi = get()
-            )
+            moviesApiRepositoryImpl = get()
         )
     }
 }
@@ -71,9 +84,7 @@ val detailsModule = module {
 val searchModule = module {
     viewModel {
         SearchViewModel(
-            MoviesApiRepositoryImpl(
-                moviesApi = get()
-            )
+            moviesApiRepositoryImpl = get()
         )
     }
 }

@@ -17,6 +17,7 @@ class AlvaflixApplication : Application() {
             modules(
                 apiModules,
                 databaseModule,
+                repositoryModule,
                 homeModule,
                 myListModule,
                 detailsModule,
